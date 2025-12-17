@@ -1,0 +1,32 @@
+name: Daily Zoo News Sync
+
+on:
+  schedule:
+    # Runs at 08:00 AM Taipei time (00:00 UTC) every day
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+jobs:
+  sync_news:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+        
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        
+    - name: Run Sync Script
+      env:
+        CHATBASE_API_KEY: ${{ secrets.CHATBASE_API_KEY }}
+        CHATBASE_CHATBOT_ID: ${{ secrets.CHATBASE_CHATBOT_ID }}
+        PYTHONPATH: .
+      run: python main.py

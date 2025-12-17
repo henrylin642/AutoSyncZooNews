@@ -1,0 +1,39 @@
+Starting Zoo News Sync...
+Fetching news from Taipei Zoo...
+Traceback (most recent call last):
+  File "/Users/henry642/Desktop/Projects/antigravity_prj/AIAgent/main.py", line 47, in <module>
+    main()
+  File "/Users/henry642/Desktop/Projects/antigravity_prj/AIAgent/main.py", line 18, in main
+    news_items = scraper.fetch_recent_news(limit=5)
+  File "/Users/henry642/Desktop/Projects/antigravity_prj/AIAgent/src/scraper.py", line 13, in fetch_recent_news
+    response = requests.get(self.NEWS_URL)
+  File "/Users/henry642/Library/Python/3.10/lib/python/site-packages/requests/api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+  File "/Users/henry642/Library/Python/3.10/lib/python/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/Users/henry642/Library/Python/3.10/lib/python/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/Users/henry642/Library/Python/3.10/lib/python/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/Users/henry642/Library/Python/3.10/lib/python/site-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+  File "/Users/henry642/Library/Python/3.10/lib/python/site-packages/urllib3/connectionpool.py", line 716, in urlopen
+    httplib_response = self._make_request(
+  File "/Users/henry642/Library/Python/3.10/lib/python/site-packages/urllib3/connectionpool.py", line 468, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 3, in raise_from
+  File "/Users/henry642/Library/Python/3.10/lib/python/site-packages/urllib3/connectionpool.py", line 463, in _make_request
+    httplib_response = conn.getresponse()
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/http/client.py", line 1374, in getresponse
+    response.begin()
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/http/client.py", line 318, in begin
+    version, status, reason = self._read_status()
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/http/client.py", line 279, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/socket.py", line 705, in readinto
+    return self._sock.recv_into(b)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/ssl.py", line 1274, in recv_into
+    return self.read(nbytes, buffer)
+  File "/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/ssl.py", line 1130, in read
+    return self._sslobj.read(len, buffer)
+KeyboardInterrupt
