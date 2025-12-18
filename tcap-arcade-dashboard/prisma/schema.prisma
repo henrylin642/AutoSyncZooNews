@@ -1,0 +1,40 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Transaction {
+  id          Int      @id @default(autoincrement())
+  date        DateTime @default(now())
+  type        String   // "INCOME" or "EXPENSE"
+  // Sub-type/Category
+  // Income: "CASH", "CARD", "PLATFORM_KLOOK", "PLATFORM_KKDAY", "PLATFORM_OTHER"
+  // Expense: "RENT", "SALARY", "OPERATIONS", "MARKETING", "OTHER"
+  category    String   
+  
+  amount      Float
+  description String?
+  
+  // Platform specific
+  ticketsSold Int?     @default(0) // Number of tickets if applicable
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Event {
+  id          Int      @id @default(autoincrement())
+  name        String
+  startDate   DateTime
+  endDate     DateTime
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
